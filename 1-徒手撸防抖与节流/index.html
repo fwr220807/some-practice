@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>节流与防抖</title>
+</head>
+
+<body>
+	<button class="btn1">节流 throttle</button>
+	<button class="btn2">防抖 debounce</button>
+
+	<script>
+		const btn1 = document.querySelector('.btn1')
+		const btn2 = document.querySelector('.btn2')
+		/**
+		 * 节流：
+		 * 1. 每次运行 fn 函数，都会把 timer 设置为不是 null 值，且在 delay 时间后会恢复 null
+		 * 2. delay 时间内就不能再触发 fn 函数
+		*/
+		const throttle = function (fn, delay) {
+			let timer = null
+
+			return function () {
+				if (timer === null) {
+					fn.apply(this, arguments)
+					timer = setTimeout(() => {
+						timer = null
+					}, delay);
+				}
+			}
+		}
+
+		/**
+		 * 防抖：
+		 * 每次触发事件都会清楚上一次的 setTimeout（如果有的话）
+		 * */
+		const debounce = function (fn, delay) {
+			let timer = null
+
+			return function () {
+				if (timer !== null) {
+					clearTimeout(timer)
+				}
+
+				timer = setTimeout(() => {
+					fn.apply(this, arguments)
+				}, delay)
+			}
+		}
+
+		const log = function () {
+			console.log('点击事件触发了');
+		}
+
+		btn1.addEventListener('click', throttle(log, 500))
+		btn2.addEventListener('click', debounce(log, 500))
+	</script>
+</body>
+
+</html>
