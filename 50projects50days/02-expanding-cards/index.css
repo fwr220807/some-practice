@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    height: 100vh;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Muli', sans-serif;
+}
+
+.container {
+    width: 90vw;
+    display: flex;
+}
+
+.pic {
+    position: relative;
+    height: 80vh;
+    width: 6vw;
+    flex: 0.5;
+    border-radius: 50px;
+    margin: 10px;
+    background: no-repeat center;
+    background-size: cover;
+    transition: flex 0.7s ease-in;
+    cursor: pointer;
+}
+
+.pic h3 {
+    opacity: 0;
+    position: absolute;
+    bottom: -10px;
+    left: 25px;
+    font-size: 30px;
+    font-weight: normal;
+    color: #fff;
+}
+
+.active {
+    flex: 5;
+}
+
+.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media (max-width: 480px) {
+    .pic:nth-child(n+4) {
+        display: none;
+    }
+}
