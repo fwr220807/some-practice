@@ -1,4 +1,4 @@
-# progress-steps
+# 02-expanding-cards
 
 ![pic](https://typora-picgo-1312201263.cos.ap-guangzhou.myqcloud.com/img/202211221131240.gif)
 
